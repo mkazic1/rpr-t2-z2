@@ -29,10 +29,27 @@ public class Interval {
         this.krajnja_tacka = krajnja_tacka;
     }
 
-    /*public boolean isIn(double v) {
+    public boolean isPripadnost_pocetne() {
+        return pripadnost_pocetne;
+    }
+
+    public void setPripadnost_pocetne(boolean pripadnost_pocetne) {
+        this.pripadnost_pocetne = pripadnost_pocetne;
+    }
+
+    public boolean isPripadnost_krajnje() {
+        return pripadnost_krajnje;
+    }
+
+    public void setPripadnost_krajnje(boolean pripadnost_krajnje) {
+        this.pripadnost_krajnje = pripadnost_krajnje;
+    }
+
+    public boolean isIn(double v) {
+
     }
 
 
-    public boolean isNull() {*/
+    public boolean isNull() {
     }
 }
