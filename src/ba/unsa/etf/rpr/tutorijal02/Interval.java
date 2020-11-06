@@ -3,6 +3,15 @@ package ba.unsa.etf.rpr.tutorijal02;
 public class Interval {
     private double pocetna_tacka;
     private double krajnja_tacka;
+    private boolean pripadnost_pocetne;
+    private boolean pripadnost_krajnje;
+
+    public Interval(double pocetna_tacka, double krajnja_tacka, boolean pripadnost_pocetne, boolean pripadnost_krajnje) {
+        this.pocetna_tacka = pocetna_tacka;
+        this.krajnja_tacka = krajnja_tacka;
+        this.pripadnost_pocetne = pripadnost_pocetne;
+        this.pripadnost_krajnje = pripadnost_krajnje;
+    }
 
     public double getPocetna_tacka() {
         return pocetna_tacka;
