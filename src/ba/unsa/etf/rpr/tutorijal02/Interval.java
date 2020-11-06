@@ -13,6 +13,11 @@ public class Interval {
         this.pripadnost_krajnje = pripadnost_krajnje;
     }
 
+    public Interval() {
+        this.pocetna_tacka=0;
+        this.krajnja_tacka=0;
+    }
+
     public double getPocetna_tacka() {
         return pocetna_tacka;
     }
