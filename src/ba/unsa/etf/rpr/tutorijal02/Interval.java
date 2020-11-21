@@ -56,10 +56,10 @@ public class Interval {
     }
 
     public boolean isIn(double v) {
-
+        return v > pocetna_tacka && v < krajnja_tacka;
     }
 
-
     public boolean isNull() {
+        return this != null;
     }
 }
