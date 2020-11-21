@@ -22,10 +22,12 @@ public class Interval {
     }
 
     public static Interval intersect(Interval i1, Interval i2) {
+        Interval i3= new Interval();
         if(i1.isPripadnost_pocetne() && i2.isPripadnost_krajnje())
         if(i1.pocetna_tacka<i2.pocetna_tacka && i1.krajnja_tacka>i2.krajnja_tacka) {
-            Interval i3= new Interval(i1.pocetna_tacka, i2.krajnja_tacka, true, true);
+            i3= new Interval(i1.pocetna_tacka, i2.krajnja_tacka, true, true);
         }
+        return i3;
     }
 
     public Interval intersect(Interval interval) {
@@ -91,8 +93,8 @@ public class Interval {
     @Override
     public String toString() {
         return "Interval[" +
-                "pocetna_tacka=" + pocetna_tacka +
-                ", krajnja_tacka=" + krajnja_tacka +
+                 + pocetna_tacka +
+                "," + krajnja_tacka +
                 ')';
     }
 
