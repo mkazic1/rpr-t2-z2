@@ -7,6 +7,7 @@ public class Interval {
     private boolean pripadnost_krajnje;
 
     public Interval(double pocetna_tacka, double krajnja_tacka, boolean pripadnost_pocetne, boolean pripadnost_krajnje) {
+        if(pocetna_tacka>krajnja_tacka) throw new IllegalArgumentException("Pogresne vrijednosti!");
         this.pocetna_tacka = pocetna_tacka;
         this.krajnja_tacka = krajnja_tacka;
         this.pripadnost_pocetne = pripadnost_pocetne;
@@ -16,6 +17,10 @@ public class Interval {
     public Interval() {
         this.pocetna_tacka=0;
         this.krajnja_tacka=0;
+    }
+
+    public static Interval intersect(Interval i, Interval i2) {
+
     }
 
     public double getPocetna_tacka() {
