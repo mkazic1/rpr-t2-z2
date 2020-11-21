@@ -67,7 +67,7 @@ public class Interval {
     }
 
     public boolean isIn(double v) {
-        return v > pocetna_tacka && v < krajnja_tacka;
+        return v >= pocetna_tacka && v <= krajnja_tacka;
     }
 
     public boolean isNull() {
@@ -92,7 +92,7 @@ public class Interval {
 
     @Override
     public String toString() {
-        return "Interval[" +
+        return "[" +
                  + pocetna_tacka +
                 "," + krajnja_tacka +
                 ')';
