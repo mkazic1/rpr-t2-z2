@@ -80,4 +80,12 @@ public class Interval {
     public int hashCode() {
         return Objects.hash(pocetna_tacka, krajnja_tacka, pripadnost_pocetne, pripadnost_krajnje);
     }
+
+    @Override
+    public String toString() {
+        return "Interval[" +
+                "pocetna_tacka=" + pocetna_tacka +
+                ", krajnja_tacka=" + krajnja_tacka +
+                ')';
+    }
 }
