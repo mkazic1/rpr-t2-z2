@@ -25,15 +25,43 @@ public class Interval {
 
     public static Interval intersect(Interval i1, Interval i2) {
         Interval i3= new Interval();
-        if(i1.isPripadnost_pocetne() && i2.isPripadnost_krajnje())
-        if(i1.pocetna_tacka<i2.pocetna_tacka && i1.krajnja_tacka>i2.krajnja_tacka) {
-            i3= new Interval(i1.pocetna_tacka, i2.krajnja_tacka, true, true);
+        if (i1.pocetna_tacka <= i2.pocetna_tacka && i1.krajnja_tacka >= i2.krajnja_tacka) {
+            i3.setPocetna_tacka(i2.pocetna_tacka);
+            i3.setPripadnost_pocetne(i2.pripadnost_pocetne);
+
+            i3.setKrajnja_tacka(i2.krajnja_tacka);
+            i3.setPripadnost_krajnje(i2.pripadnost_krajnje);
+        }
+
+        if (i1.pocetna_tacka <= i2.pocetna_tacka && i1.krajnja_tacka <= i2.krajnja_tacka) {
+            i3.setPocetna_tacka(i2.pocetna_tacka);
+            i3.setPripadnost_pocetne(i2.pripadnost_pocetne);
+
+            i3.setKrajnja_tacka(i1.krajnja_tacka);
+            i3.setPripadnost_krajnje(i1.pripadnost_krajnje);
         }
         return i3;
     }
 
     public Interval intersect(Interval interval) {
-        Interval interval1=new Interval(interval.pocetna_tacka, interval.krajnja_tacka, interval.pripadnost_pocetne, interval.pripadnost_krajnje);
+        Interval interval1= new Interval();
+        if (this.pocetna_tacka <= interval.pocetna_tacka && this.krajnja_tacka >= interval.krajnja_tacka) {
+            interval1.setPocetna_tacka(interval.pocetna_tacka);
+            interval1.setPripadnost_pocetne(interval.pripadnost_pocetne);
+
+            interval1.setKrajnja_tacka(interval.krajnja_tacka);
+            interval1.setPripadnost_krajnje(interval.pripadnost_krajnje);
+        }
+
+        if (this.pocetna_tacka <= interval.pocetna_tacka && this.krajnja_tacka <= interval.krajnja_tacka) {
+            interval1.setPocetna_tacka(interval.pocetna_tacka);
+            interval1.setPripadnost_pocetne(interval.pripadnost_pocetne);
+
+            interval1.setKrajnja_tacka(this.krajnja_tacka);
+            interval1.setPripadnost_krajnje(this.pripadnost_krajnje);
+        }
+
+
         return interval1;
     }
     public double getPocetna_tacka() {
@@ -70,17 +98,17 @@ public class Interval {
 
     public boolean isIn(double v) {
         if(this.pripadnost_pocetne && this.pripadnost_krajnje) {
-            if (v >= pocetna_tacka && v <= krajnja_tacka) return true;
-        } else if(this.pripadnost_pocetne && !this.pripadnost_krajnje) {
-            if(v>=pocetna_tacka && v<krajnja_tacka) return true;
-        } else if(!this.pripadnost_pocetne && this.pripadnost_krajnje) {
-            if(v>pocetna_tacka && v<=krajnja_tacka) return true;
+            return v >= pocetna_tacka && v <= krajnja_tacka;
+        } else if(this.pripadnost_pocetne) {
+            return v >= pocetna_tacka && v < krajnja_tacka;
+        } else if(this.pripadnost_krajnje) {
+            return v > pocetna_tacka && v <= krajnja_tacka;
         }
         return false;
     }
 
     public boolean isNull() {
-        return this != null;
+        return true;
     }
 
     @Override
@@ -101,10 +129,15 @@ public class Interval {
 
     @Override
     public String toString() {
-        return "[" +
-                 + pocetna_tacka +
-                "," + krajnja_tacka +
-                ')';
+        if(this.pripadnost_pocetne && this.pripadnost_krajnje)
+            return "[" + pocetna_tacka + ',' + krajnja_tacka + "]";
+        else if(this.pripadnost_pocetne)
+            return "[" + pocetna_tacka + ',' + krajnja_tacka + ")";
+        else if(!this.pripadnost_krajnje)
+            return "(" + pocetna_tacka + ',' + krajnja_tacka + ")";
+        else if(pocetna_tacka==0 && krajnja_tacka==0)
+            return "()";
+        return " ";
     }
 
 }
