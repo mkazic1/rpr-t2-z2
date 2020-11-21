@@ -19,6 +19,8 @@ public class Interval {
     public Interval() {
         this.pocetna_tacka=0;
         this.krajnja_tacka=0;
+        pripadnost_pocetne=false;
+        pripadnost_krajnje=false;
     }
 
     public static Interval intersect(Interval i1, Interval i2) {
@@ -67,7 +69,14 @@ public class Interval {
     }
 
     public boolean isIn(double v) {
-        return v >= pocetna_tacka && v <= krajnja_tacka;
+        if(this.pripadnost_pocetne && this.pripadnost_krajnje) {
+            if (v >= pocetna_tacka && v <= krajnja_tacka) return true;
+        } else if(this.pripadnost_pocetne && !this.pripadnost_krajnje) {
+            if(v>=pocetna_tacka && v<krajnja_tacka) return true;
+        } else if(!this.pripadnost_pocetne && this.pripadnost_krajnje) {
+            if(v>pocetna_tacka && v<=krajnja_tacka) return true;
+        }
+        return false;
     }
 
     public boolean isNull() {
