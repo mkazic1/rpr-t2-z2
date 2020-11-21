@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.tutorijal02;
 
+import java.util.Objects;
+
 public class Interval {
     private double pocetna_tacka;
     private double krajnja_tacka;
@@ -61,5 +63,21 @@ public class Interval {
 
     public boolean isNull() {
         return this != null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Interval interval = (Interval) o;
+        return Double.compare(interval.pocetna_tacka, pocetna_tacka) == 0 &&
+                Double.compare(interval.krajnja_tacka, krajnja_tacka) == 0 &&
+                pripadnost_pocetne == interval.pripadnost_pocetne &&
+                pripadnost_krajnje == interval.pripadnost_krajnje;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pocetna_tacka, krajnja_tacka, pripadnost_pocetne, pripadnost_krajnje);
     }
 }
