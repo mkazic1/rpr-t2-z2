@@ -21,10 +21,17 @@ public class Interval {
         this.krajnja_tacka=0;
     }
 
-    public static Interval intersect(Interval i, Interval i2) {
-
+    public static Interval intersect(Interval i1, Interval i2) {
+        if(i1.isPripadnost_pocetne() && i2.isPripadnost_krajnje())
+        if(i1.pocetna_tacka<i2.pocetna_tacka && i1.krajnja_tacka>i2.krajnja_tacka) {
+            Interval i3= new Interval(i1.pocetna_tacka, i2.krajnja_tacka, true, true);
+        }
     }
 
+    public Interval intersect(Interval interval) {
+        Interval interval1=new Interval(interval.pocetna_tacka, interval.krajnja_tacka, interval.pripadnost_pocetne, interval.pripadnost_krajnje);
+        return interval1;
+    }
     public double getPocetna_tacka() {
         return pocetna_tacka;
     }
@@ -88,4 +95,5 @@ public class Interval {
                 ", krajnja_tacka=" + krajnja_tacka +
                 ')';
     }
+
 }
