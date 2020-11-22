@@ -108,7 +108,7 @@ public class Interval {
     }
 
     public boolean isNull() {
-        return true;
+        return pocetna_tacka == 0 && krajnja_tacka == 0 && !pripadnost_pocetne && !pripadnost_krajnje;
     }
 
     @Override
@@ -129,15 +129,14 @@ public class Interval {
 
     @Override
     public String toString() {
-        if(this.pripadnost_pocetne && this.pripadnost_krajnje)
+        if (isNull()) return "()";
+        else if(this.pripadnost_pocetne && this.pripadnost_krajnje)
             return "[" + pocetna_tacka + ',' + krajnja_tacka + "]";
         else if(this.pripadnost_pocetne)
             return "[" + pocetna_tacka + ',' + krajnja_tacka + ")";
         else if(!this.pripadnost_krajnje)
             return "(" + pocetna_tacka + ',' + krajnja_tacka + ")";
-        else if(pocetna_tacka==0 && krajnja_tacka==0)
-            return "()";
-        return " ";
+        return null;
     }
 
 }
